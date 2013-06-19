@@ -1,0 +1,13 @@
+# Makefile for anim2pcx.
+
+.c.obj:
+	@cl /AM /I. $*.c /c
+
+.asm.obj:
+	@echo ---- $*.asm
+	@masm /T /ML $*;
+
+anim2pcx.exe: anim2pcx.obj anima.obj dalloc.obj gio.obj\
+	misc.obj misca.obj lpfile.obj pbio.obj
+	@link @anim2pcx.lnk
+
